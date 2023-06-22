@@ -1,0 +1,10 @@
+{
+  "name": "@web-alchemy/eleventy-plugin-lightningcss",
+  "dependencies": {
+    "browserslist": "^4.21.9",
+    "lightningcss": "^1.21.0"
+  },
+  "peerDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

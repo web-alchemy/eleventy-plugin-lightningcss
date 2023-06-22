@@ -1,0 +1,17 @@
+---
+permalink: /
+---
+
+{% set styles %}
+:root {
+  font: 100%/1.5 monospace;
+}
+
+body {
+  margin: 0;
+}
+{% endset %}
+
+<style>
+  {{ styles | transformStyles({ minify: true }) }}
+</style>
