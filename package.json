@@ -1,10 +1,35 @@
 {
   "name": "@web-alchemy/eleventy-plugin-lightningcss",
+  "version": "0.0.0",
+  "main": ".eleventy.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "postpublish": "git push origin --all; git push origin --tags",
+    "postversion": "npm publish",
+    "preversion": "npm test",
+    "test": "echo \"No test specified\" && exit 0"
+  },
   "dependencies": {
     "browserslist": "^4.21.9",
     "lightningcss": "^1.21.0"
   },
   "peerDependencies": {
-    "@11ty/eleventy": "^2.0.1"
-  }
+    "@11ty/eleventy": ">=2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-alchemy/eleventy-plugin-lightningcss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/web-alchemy/eleventy-plugin-lightningcss/issues"
+  },
+  "homepage": "https://github.com/web-alchemy/eleventy-plugin-lightningcss",
+  "keywords": [
+    "eleventy",
+    "eleventy-plugin",
+    "lightningcss",
+    "css"
+  ]
 }

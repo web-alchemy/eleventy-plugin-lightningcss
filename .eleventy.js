@@ -1,8 +1,6 @@
 const lightningcss = require('lightningcss')
 const browserslist = require('browserslist')
 
-const targets = lightningcss.browserslistToTargets(browserslist('>= 0.1%'))
-
 /**
  * @callback EleventyCustomTemplateFilter
  * @param {string} inputContent
@@ -13,13 +11,16 @@ const targets = lightningcss.browserslistToTargets(browserslist('>= 0.1%'))
  * @typedef {Object} PluginOptions
  * @property {EleventyCustomTemplateFilter} filter
  * @property {import('lightningcss').BundleAsyncOptions} lightningcss
+ * @property {string} targets
  */
 
 /**
  * @param {object} eleventyConfig
  * @param {PluginOptions} userOptions
  */
-module.exports = function(eleventyConfig, userOptions) {
+module.exports = function(eleventyConfig, userOptions = {}) {
+  const targets = lightningcss.browserslistToTargets(browserslist(userOptions.targets))
+
   function bundleStyles(bundleOptions) {
     return lightningcss.bundleAsync({
       targets,
@@ -66,7 +67,8 @@ module.exports = function(eleventyConfig, userOptions) {
 
       return async function(data) {
         const bundleResult = await bundleStyles({
-          filename: inputPath
+          filename: inputPath,
+          code: Buffer.from(inputContent)
         })
 
         const content = bundleResult.code.toString()

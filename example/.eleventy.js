@@ -7,7 +7,7 @@ module.exports = function(eleventyConfig) {
     },
 
     lightningcss: {
-      minify: false
+      minify: process.env.NODE_ENV === 'production'
     }
   })
 
