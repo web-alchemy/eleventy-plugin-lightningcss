@@ -37,7 +37,7 @@ module.exports = function(eleventyConfig, userOptions = {}) {
     })
   }
 
-  eleventyConfig.addFilter('transformStyles', async(content, options) => {
+  eleventyConfig.addFilter('transformStyles', function (content, options) {
     const buildResult = transformStyles({
       code: Buffer.from(content),
       ...options,
