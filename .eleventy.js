@@ -67,8 +67,7 @@ module.exports = function(eleventyConfig, userOptions = {}) {
 
       return async function(data) {
         const bundleResult = await bundleStyles({
-          filename: inputPath,
-          code: Buffer.from(inputContent)
+          filename: inputPath
         })
 
         const content = bundleResult.code.toString()
