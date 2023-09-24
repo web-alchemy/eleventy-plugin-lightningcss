@@ -57,6 +57,12 @@ module.exports = function(eleventyConfig, userOptions = {}) {
         return (data) => {
           return data.permalink
         }
+      },
+
+      cache: true,
+
+      getCacheKey: function(inputContent, inputPath) {
+        return inputPath
       }
     },
 
@@ -65,14 +71,20 @@ module.exports = function(eleventyConfig, userOptions = {}) {
         return
       }
 
+      const bundleResult = await bundleStyles({
+        filename: inputPath,
+        sourceMap: true
+      })
+
+      const map = JSON.parse(bundleResult.map.toString())
+
+      const dependencies = map.sources
+
+      this.addDependencies(inputPath, dependencies)
+
       return async function(data) {
-        const bundleResult = await bundleStyles({
-          filename: inputPath
-        })
-
-        const content = bundleResult.code.toString()
-
-        return content
+        const css = bundleResult.code.toString()
+        return css
       }
     }
   })
