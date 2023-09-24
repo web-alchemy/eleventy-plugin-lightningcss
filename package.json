@@ -16,7 +16,7 @@
     "lightningcss": "^1.21.0"
   },
   "peerDependencies": {
-    "@11ty/eleventy": ">=2.0.1"
+    "@11ty/eleventy": "^2.0.1"
   },
   "repository": {
     "type": "git",
