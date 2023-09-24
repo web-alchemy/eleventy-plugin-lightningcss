@@ -67,7 +67,7 @@ module.exports = function(eleventyConfig, userOptions = {}) {
     },
 
     async compile(inputContent, inputPath) {
-      if (!userOptions.filter(inputContent, inputPath)) {
+      if (typeof userOptions.filter === 'function' && !userOptions.filter(inputContent, inputPath)) {
         return
       }
 
